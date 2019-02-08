@@ -1,0 +1,54 @@
+# Column names are name, neighborhood, cuisine, review, price, health
+  SELECT * 
+  FROM nomnom; 
+
+# Distinct neighborhoods are Broolyn, Midtown, Chinatown, Uptown, Queens, Downtown
+  SELECT DISTINCT neighborhood
+  FROM nomnom;
+  
+# Distinct cuisines are Steak, Korean, Chinese, Pizza Ethiopian, Vegetarian, Italian, Japanese, American, Mediterranean, Indian, Soul Food, Mexican
+  SELECT DISTINCT cuisine
+  FROM nomnom;
+  
+# Chinese takeout options
+  SELECT *
+  FROM nomnom
+  WHERE cuisine = 'Chinese';
+  
+# Restaurants with reviews of 4 and above
+  SELECT *
+  FROM nomnom
+  WHERE cuisine = 'Chinese';
+  
+# Italian restaurants with price '$$$'
+  SELECT *
+  FROM nomnom
+  WHERE cuisine = 'Italian' AND price = '$$$';
+  
+# Restaurants that contains the word 'meatball'
+  SELECT *
+  FROM nomnom
+  WHERE cuisine LIKE '%meatball%';
+  
+# Find all the health grade pending restuarants (empty values)
+  SELECT *
+  FROM nomnom
+  WHERE health IS NULL;
+
+# Create top 10 restaurants ranking based on reviews
+  SELECT *
+  FROM nomnom
+  ORDER BY review DESC
+  LIMIT 10;
+
+# Use a case statement to hange the rating system
+  SELECT review,
+  CASE
+    WHEN review>4.5 THEN 'Extraordinary'
+    WHEN review > 4 THEN 'Excellent'
+    WHEN review > 3 THEN 'Good'
+    WHEN review > 2 THEN 'Fair'
+    ELSE 'Poor'
+  END AS 'Review'
+  FROM nomnom;
+  
