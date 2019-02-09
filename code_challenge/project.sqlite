@@ -1,0 +1,10 @@
+# column names
+  SELECT *
+  FROM orders
+  LIMIT 10;
+  
+# Use DISTINCT to find out all the unique order_date values in this table.
+ SELECT DISTINCT order_date
+ FROM orders;
+ 
+ 
