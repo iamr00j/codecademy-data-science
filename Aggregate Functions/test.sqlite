@@ -1,0 +1,6 @@
+# === CODE CHALLENGE 1 ===
+# Use COUNT() and a LIKE operator to determine the number of users that have an email ending in '.com'.
+  SELECT COUNT(*) AS count
+  FROM users
+  WHERE email LIKE '%.com';
+  
