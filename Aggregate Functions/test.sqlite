@@ -4,3 +4,10 @@
   FROM users
   WHERE email LIKE '%.com';
   
+# === CODE CHALLENGE 2 ===
+# Use COUNT(), GROUP BY, and ORDER BY to create a list of first names and occurrences within the users table.
+# Order the data so that the most popular names are displayed first.
+  SELECT first_name, COUNT(*) AS 'count'
+  FROM users
+  GROUP BY first_name
+  ORDER BY 2 DESC;
