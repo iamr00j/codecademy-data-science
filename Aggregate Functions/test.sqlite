@@ -11,3 +11,57 @@
   FROM users
   GROUP BY first_name
   ORDER BY 2 DESC;
+
+# === CODE CHALLENGE 3 ===
+# Use COUNT(), GROUP BY, and ORDER BY to create this result and order this data by increasing duration.
+  SELECT ROUND(watch_duration_in_minutes) AS 'duration', COUNT (*) AS 'count'
+  FROM watch_history
+  GROUP BY user_id
+  ORDER BY duration ASC;
+  
+# === CODE CHALLENGE 4 ===
+# Find all the users that have successfully made a payment to Codeflix and find their total payments made.
+# Sort them by their total payments (from high to low).
+# Use SUM(), WHERE, GROUP BY, and ORDER BY.
+  SELECT user_id, SUM(amount) AS 'total'
+  FROM payments
+  WHERE status = 'paid'
+  GROUP BY user_id
+  ORDER BY total DESC;
+  
+# === CODE CHALLENGE 5 ===
+# Generate a table of user ids and total watch duration for users who watched more than 400 minutes of content.
+# Use SUM(), GROUP BY, and HAVING to achieve this.
+  SELECT user_id, SUM(watch_duration_in_minutes)
+  FROM watch_history
+  GROUP BY user_id
+  HAVING SUM(watch_duration_in_minutes) > 400;
+  
+# === CODE CHALLENGE 6 ===
+# To the nearest minute, how many minutes of content were streamed on Codeflix?
+  SELECT ROUND(SUM(watch_duration_in_minutes),0)
+  FROM watch_history;
+
+# === CODE CHALLENGE 7 ===
+# Which days in this period did Codeflix collect the most money?
+# Your result should have two columns, pay_date and total amount, sorted by the latter descending.
+# This should only include successful payments (status = 'paid').
+# Use SUM(), GROUP BY, and ORDER BY.
+  SELECT pay_date AS 'day', SUM(amount) AS 'total'
+  FROM payments
+  WHERE status = 'paid'
+  GROUP BY day
+  ORDER BY total DESC;
+  
+# === CODE CHALLENGE 8 ===
+# When users successfully pay Codeflix (status = 'paid'), what is the average payment amount?
+  SELECT AVG(amount)
+  FROM payments
+  WHERE status = 'paid';
+
+# === CODE CHALLENGE 9 ===
+# Of all the events in the watch_history table, what is the duration of the longest individual watch event? 
+# What is the duration of the shortest?
+# Use one query and rename the results to max and min.
+  SELECT MAX(watch_duration_in_minutes) AS 'max', MIN(watch_duration_in_minutes) AS 'min'
+  FROM watch_history;
